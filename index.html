@@ -757,7 +757,6 @@
         <div class="container">
             <nav class="nav">
                 <a href="#" class="logo">Tarin<span> Gunarathna</span></a>
-
                 <ul class="nav-list">
                     <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
@@ -868,7 +867,8 @@
                         </div>
                     </div>
 
-                    <a href="#" class="btn">Download CV</a>
+                    <a href="TarinSV 2025.pdf" class="btn" download="Tarin_Gunarathna_CV.pdf">Download CV</a>
+
                 </div>
             </div>
         </div>
@@ -1006,8 +1006,8 @@
                             <span class="project-tag">MySQL</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://github.com/tarin-gunarathna/Food.git" class="project-link"><i
+                                    class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -1032,8 +1032,8 @@
                             <span class="project-tag">Analytics</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://github.com/tarin-gunarathna/Food.git" class="project-link"><i
+                                    class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -1055,8 +1055,8 @@
                             <span class="project-tag">Modern UI/UX</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://github.com/tarin-gunarathna/sandow.git" class="project-link"><i
+                                    class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -1078,8 +1078,8 @@
                             <span class="project-tag">Third-party Libraries</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://youtu.be/xd9_UTQRw6M" class="project-link"><i class="fas fa-globe"></i>
+                                Live Demo</a>
                         </div>
                     </div>
                 </div>
@@ -1106,8 +1106,8 @@
                             <span class="project-tag">JavaScript</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://github.com/tarin-gunarathna/Luxury_Auction.git" class="project-link"><i
+                                    class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -1132,8 +1132,8 @@
                             <span class="project-tag">Hibernate</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://github.com/tarin-gunarathna/National_Bank.git" class="project-link"><i
+                                    class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -1157,8 +1157,8 @@
                             <span class="project-tag">AudioFX</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://youtu.be/amgXgWQZdts" class="project-link"><i class="fas fa-globe"></i>
+                                Live Demo</a>
                         </div>
                     </div>
                 </div>
@@ -1211,25 +1211,26 @@
                     </div>
                 </div>
 
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Your Name" required>
-                    </div>
+                <form class="contact-form" id="contactForm">
+    <div class="form-group">
+        <input type="text" class="form-input" name="user_name" placeholder="Your Name" required>
+    </div>
 
-                    <div class="form-group">
-                        <input type="email" class="form-input" placeholder="Your Email" required>
-                    </div>
+    <div class="form-group">
+        <input type="email" class="form-input" name="user_email" placeholder="Your Email" required>
+    </div>
 
-                    <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Subject" required>
-                    </div>
+    <div class="form-group">
+        <input type="text" class="form-input" name="subject" placeholder="Subject" required>
+    </div>
 
-                    <div class="form-group">
-                        <textarea class="form-input" placeholder="Your Message" required></textarea>
-                    </div>
+    <div class="form-group">
+        <textarea class="form-input" name="message" placeholder="Your Message" required></textarea>
+    </div>
 
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
+    <button type="submit" class="btn">Send Message</button>
+</form>
+
             </div>
         </div>
     </section>
@@ -1243,11 +1244,15 @@
                     <p class="footer-description">Creating beautiful, functional websites and applications with a focus
                         on user experience.</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/tarin.gunarathna/" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/tarin.gunarathna/" class="social-link"><i
+                                class="fab fa-facebook-f"></i></a>
                         <a href="https://x.com/Gunarathna1485" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/tarin_gunarathna_official" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/in/tarin-gunarathna" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/tarin-gunarathna" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/tarin_gunarathna_official" class="social-link"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/tarin-gunarathna" class="social-link"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/tarin-gunarathna" class="social-link"><i
+                                class="fab fa-github"></i></a>
                     </div>
                 </div>
 
@@ -1284,6 +1289,38 @@
             </div>
         </div>
     </footer>
+
+
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+    (function(){
+        emailjs.init("DNkkiRbQIHsZWYu5C"); // replace with your EmailJS user ID
+    })();
+
+    document.getElementById('contactForm').addEventListener('submit', function(event){
+        event.preventDefault();
+
+        // Add current time dynamically
+        const existingTimeInput = this.querySelector('input[name="time"]');
+        if (existingTimeInput) existingTimeInput.remove();
+
+        const timeInput = document.createElement('input');
+        timeInput.type = 'hidden';
+        timeInput.name = 'time';
+        timeInput.value = new Date().toLocaleString();
+        this.appendChild(timeInput);
+
+        emailjs.sendForm('service_mokuc8m', 'template_itdp65e', this)
+        .then(function(){
+            alert('Message sent successfully!');
+            document.getElementById('contactForm').reset();
+        }, function(error){
+            alert('Oops! Something went wrong: ' + JSON.stringify(error));
+        });
+    });
+</script>
 
     <script>
         // DOM Elements
@@ -1382,6 +1419,7 @@
             form.reset();
         });
     </script>
+
 </body>
 
 </html>
