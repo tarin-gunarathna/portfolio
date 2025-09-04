@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarin Gunarathna | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6c63ff;
+            --secondary-color: #ff6584;
+            --dark-color: #2a2a72;
+            --light-color: #f8f9fa;
+            --success-color: #4cc9f0;
+            --text-color: #333;
+            --text-light: #767676;
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .btn:hover {
+            background: #554fd8;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            padding: 10px 0;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-list {
+            display: flex;
+        }
+
+        .nav-item {
+            margin: 0 15px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background: var(--dark-color);
+            margin: 5px;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.1) 0%, rgba(255, 101, 132, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 0.8s;
+        }
+
+        .hero-description {
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 1.1s;
+        }
+
+        .hero-btns {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 1.4s;
+        }
+
+        .hero-btns .btn:first-child {
+            margin-right: 15px;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 5%;
+            bottom: 0;
+            width: 45%;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateX(50px);
+            animation: fadeInRight 1s ease forwards 1s;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 1s ease;
+        }
+
+        .about-img.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-content h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .about-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .info-item i {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .skill-item.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .skill-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .project-item.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .project-description {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .project-tag {
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .project-links {
+            display: flex;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 15px;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            color: var(--primary-color);
+        }
+
+        .project-link i {
+            margin-right: 5px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .contact-item.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+
+        .contact-details h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .contact-details p {
+            color: var(--text-light);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        .contact-form.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+        }
+
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span {
+            color: var(--primary-color);
+        }
+
+        .footer-description {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .social-links {
+            display: flex;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .footer-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .about-grid,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                margin-bottom: 30px;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-list {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+
+            .nav-list.active {
+                right: 0;
+            }
+
+            .nav-item {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1000;
+            }
+
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 8px);
+            }
+
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -8px);
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-btns .btn:first-child {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .hero-btns {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .about-info {
+                grid-template-columns: 1fr;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .project-link {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">Tarin<span> Gunarathna</span></a>
+
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+
+                <div class="hamburger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Hi, I'm Tarin Gunarathna</h1>
+                <h2 class="hero-subtitle">Android Application Developer</h2>
+                <p class="hero-description">I create beautiful, functional websites and applications with a focus on
+                    user experience and modern design principles.</p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+        </div>
+
+        <img src="Images/MyPhoto/MyPic-removebg-preview.png" alt="Hero Image" class="hero-image">
+    </section>
+
+    <script>
+        // Function to calculate age from birthdate
+        function calculateAge(birthDate) {
+            const today = new Date();
+            const birth = new Date(birthDate);
+            let age = today.getFullYear() - birth.getFullYear();
+            const monthDiff = today.getMonth() - birth.getMonth();
+
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+                age--;
+            }
+
+            return age;
+        }
+
+        // Set your birthdate (format: YYYY-MM-DD)
+        const birthDate = '2005-07-11';
+
+        // Calculate age
+        const age = calculateAge(birthDate);
+
+        // Update the about section with your age
+        document.addEventListener('DOMContentLoaded', function () {
+            const aboutParagraph = document.querySelector('.about-content p');
+            if (aboutParagraph) {
+                aboutParagraph.innerHTML = aboutParagraph.innerHTML.replace(
+                    "Hello! I'm Tarin, a passionate Android developer",
+                    `Hello! I'm Tarin,  ${age}-year-old`
+                );
+            }
+        });
+    </script>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="Images/MyPhoto/MyPic.jpg" alt="About Me" class="about-img">
+                </div>
+
+                <div class="about-content">
+                    <h3>Android Application Developer</h3>
+                    <p>Hello! I'm Tarin, a passionate Android developer and final-year Software Engineering
+                        undergraduate specializing in mobile application development. I create user-friendly,
+                        high-performance Android apps with a focus on clean architecture and modern development
+                        practices.</p>
+                    <p>With experience in Android development, RESTful APIs, and object-oriented programming, I've
+                        worked on various projects from concept to deployment on the Google Play Store. I'm passionate
+                        about problem-solving and innovative software design that makes a difference in people's lives.
+                    </p>
+
+                    <div class="about-info">
+                        <div class="info-item">
+                            <i class="fas fa-user"></i>
+                            <span><strong>Name:</strong> Tarin Gunarathna</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span><strong>Phone:</strong> +94 75 081 2244</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span><strong>Email:</strong> taringunarathna25@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>Location:</strong> Mount Lavinia, Sri Lanka</span>
+                        </div>
+                    </div>
+
+                    <a href="#" class="btn">Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Skills</h2>
+            </div>
+
+            <div class="skills-container">
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3 class="skill-title">HTML5</h3>
+                    <p>Semantic markup, accessibility, and modern HTML features.</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h3 class="skill-title">CSS3</h3>
+                    <p>Flexbox, Grid, animations, and responsive design principles.</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3 class="skill-title">JavaScript</h3>
+                    <p>ES6+, DOM manipulation, async programming, and modern frameworks.</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fab fa-android"></i>
+                    </div>
+                    <h3 class="skill-title">Android Development</h3>
+                    <p>Native Android app development with modern architecture patterns.</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <h3 class="skill-title">Java</h3>
+                    <p>Object-oriented programming, algorithms, and Android SDK.</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fab fa-php"></i>
+                    </div>
+                    <h3 class="skill-title">PHP</h3>
+                    <p>Server-side scripting, web applications, and database integration.</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fab fa-windows"></i>
+                    </div>
+                    <h3 class="skill-title">C#</h3>
+                    <p>.NET framework, desktop applications, and game development.</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="skill-title">MySQL</h3>
+                    <p>Database design, query optimization, and data management.</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="skill-title">Firebase</h3>
+                    <p>Authentication, realtime database, cloud functions, and hosting.</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="skill-title">Arduino</h3>
+                    <p>Embedded systems, IoT projects, and hardware programming.</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="skill-title">Unity</h3>
+                    <p>Game development, 3D environments, and interactive experiences.</p>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3 class="skill-title">React Native</h3>
+                    <p>Cross-platform mobile development with JavaScript.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Projects</h2>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-item">
+                    <img src="Images/Projects/Food.png" alt="Food Android App" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Food – Android App</h3>
+                        <p class="project-description">
+                            A smart food e-commerce mobile app dedicated to food lovers.
+                            Allows users to seamlessly browse, order, and pay for their favorite foods
+                            with a dedicated customer app tailored exclusively for food buyers.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Java (Android)</span>
+                            <span class="project-tag">Firebase</span>
+                            <span class="project-tag">SQLite</span>
+                            <span class="project-tag">Hibernate</span>
+                            <span class="project-tag">MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="project-item">
+                    <img src="Images/Projects/FoodSeller.png" alt="Food Seller Android App" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Food Seller – Android App</h3>
+                        <p class="project-description">
+                            A seller-side mobile app for food shops and restaurants.
+                            Enables sellers to list items, manage orders, track deliveries, monitor sales,
+                            and view real-time analytics with interactive charts.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Java (Android)</span>
+                            <span class="project-tag">Firebase</span>
+                            <span class="project-tag">SQLite</span>
+                            <span class="project-tag">Hibernate</span>
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">Google Maps API</span>
+                            <span class="project-tag">Analytics</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="project-item">
+                    <img src="Images/Projects/sandow.png" alt="Sadow Android App" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Sandow – Android App</h3>
+                        <p class="project-description">
+                            A fitness and gym mobile app designed to motivate users with tailored exercise plans,
+                            real-time sensor feedback, and personalized workout tracking for achieving fitness goals.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Java (Android)</span>
+                            <span class="project-tag">Firebase</span>
+                            <span class="project-tag">SQLite</span>
+                            <span class="project-tag">Android Sensor APIs</span>
+                            <span class="project-tag">Modern UI/UX</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <img src="Images/Projects/Pure.png" alt="PURE React Native App" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">PURE – React Native App</h3>
+                        <p class="project-description">
+                            A modern cross-platform chat app that lets users add contacts, send messages, and react with
+                            expressive interactions,
+                            featuring a clean UI/UX and smooth real-time messaging experience.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">React Native</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">React Navigation</span>
+                            <span class="project-tag">Emoji Picker</span>
+                            <span class="project-tag">Third-party Libraries</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="project-item">
+                    <img src="Images/Projects/BCD1.png" alt="Luxury Auction System" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Luxury Auction – Distributed Online Auction System</h3>
+                        <p class="project-description">
+                            A real-time online auction platform with distributed J2EE architecture,
+                            featuring user registration, authentication, bidding, auto-bidding,
+                            and live updates with JMS and WebSocket integration.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">EJB</span>
+                            <span class="project-tag">JMS</span>
+                            <span class="project-tag">JSP</span>
+                            <span class="project-tag">WebSocket</span>
+                            <span class="project-tag">Gson</span>
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="project-item">
+                    <img src="Images/Projects/BCD2.png" alt="National Bank System" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">National Bank – EJB-Based Banking System</h3>
+                        <p class="project-description">
+                            A secure enterprise-level banking system with multi-role access,
+                            core features like account creation, fund transfers, user management,
+                            scheduled transactions, and robust security with JAAS and role-based access control.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">J2EE</span>
+                            <span class="project-tag">EJB</span>
+                            <span class="project-tag">JPA</span>
+                            <span class="project-tag">Jakarta Security</span>
+                            <span class="project-tag">JAAS</span>
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">Hibernate</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="project-item">
+                    <img src="Images/Projects/1Game.png" alt="3D Adventure Game - Knight vs Monster"
+                        class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">3D Adventure Game – Knight vs Monster</h3>
+                        <p class="project-description">
+                            A 3D action-adventure game where a knight battles monsters in a jungle environment,
+                            featuring immersive 3D assets, sound effects, animations, and interactive combat mechanics.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Unity</span>
+                            <span class="project-tag">C#</span>
+                            <span class="project-tag">NavMesh</span>
+                            <span class="project-tag">3D Assets</span>
+                            <span class="project-tag">AudioFX</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-globe"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Mount Lavinia, Sri Lanka</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>taringunarathna25@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>+94 75 081 2244</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Your Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Your Email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-input" placeholder="Your Message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="footer-logo">Tarin<span> Gunarathna</span></div>
+                    <p class="footer-description">Creating beautiful, functional websites and applications with a focus
+                        on user experience.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/tarin.gunarathna/" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/Gunarathna1485" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/tarin_gunarathna_official" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/tarin-gunarathna" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/tarin-gunarathna" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Android App Development</a></li>
+                        <li><a href="#">Cross-Platform Apps (React Native)</a></li>
+                        <li><a href="#">Mobile UI/UX Design</a></li>
+                        <li><a href="#">App Integration with Firebase & APIs</a></li>
+                        <li><a href="#">App Maintenance & Support</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Tarin Gunarathna. All Rights Reserved.</p>
+
+                <script>
+                    document.getElementById('currentYear').textContent = new Date().getFullYear();
+                </script>
+
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const header = document.querySelector('.header');
+        const hamburger = document.querySelector('.hamburger');
+        const navList = document.querySelector('.nav-list');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const aboutImg = document.querySelector('.about-img');
+        const skillItems = document.querySelectorAll('.skill-item');
+        const projectItems = document.querySelectorAll('.project-item');
+        const contactItems = document.querySelectorAll('.contact-item');
+        const contactForm = document.querySelector('.contact-form');
+
+        // Sticky Header
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Navigation
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navList.classList.toggle('active');
+        });
+
+        // Close mobile navigation when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navList.classList.remove('active');
+            });
+        });
+
+        // Scroll Animations
+        function checkScroll() {
+            // About image animation
+            const aboutImgPosition = aboutImg.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+
+            if (aboutImgPosition < screenPosition) {
+                aboutImg.classList.add('animated');
+            }
+
+            // Skills animation
+            skillItems.forEach((item, index) => {
+                const itemPosition = item.getBoundingClientRect().top;
+
+                if (itemPosition < screenPosition) {
+                    setTimeout(() => {
+                        item.classList.add('animated');
+                    }, index * 200);
+                }
+            });
+
+            // Projects animation
+            projectItems.forEach((item, index) => {
+                const itemPosition = item.getBoundingClientRect().top;
+
+                if (itemPosition < screenPosition) {
+                    setTimeout(() => {
+                        item.classList.add('animated');
+                    }, index * 200);
+                }
+            });
+
+            // Contact animation
+            contactItems.forEach((item, index) => {
+                const itemPosition = item.getBoundingClientRect().top;
+
+                if (itemPosition < screenPosition) {
+                    setTimeout(() => {
+                        item.classList.add('animated');
+                    }, index * 200);
+                }
+            });
+
+            // Contact form animation
+            const formPosition = contactForm.getBoundingClientRect().top;
+
+            if (formPosition < screenPosition) {
+                contactForm.classList.add('animated');
+            }
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Form submission
+        const form = document.querySelector('.contact-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            form.reset();
+        });
+    </script>
+</body>
+
+</html>
