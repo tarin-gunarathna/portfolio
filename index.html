@@ -102,10 +102,28 @@ img{max-width:100%;display:block;}
 .reveal-rotate.in{opacity:1; transform:perspective(900px) rotateX(0) translateY(0);}
 
 .reveal-curtain{
-  clip-path:inset(0 100% 0 0);
-  transition:clip-path .9s cubic-bezier(.65,0,.35,1);
+  clip-path:none !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  transform:none !important;
 }
-.reveal-curtain.in{clip-path:inset(0 0% 0 0);}
+.reveal-curtain.in{clip-path:none !important; opacity:1 !important; visibility:visible !important; transform:none !important;}
+
+/* Projects must always remain visible even if JavaScript/IntersectionObserver fails. */
+#projects{
+  display:block !important;
+  position:relative;
+  z-index:5;
+  visibility:visible !important;
+  opacity:1 !important;
+  scroll-margin-top:90px;
+}
+#projects .section-title,
+#projects .projects-grid,
+#projects .project-item{
+  visibility:visible !important;
+}
+#projects .section-title{opacity:1 !important; transform:none !important;}
 
 /* ============ HEADER ============ */
 .header{
@@ -478,7 +496,7 @@ textarea.form-input{min-height:130px;resize:vertical;}
         <li><a href="#home" class="nav-link">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#projects" class="nav-link projects-nav-link">Projects</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
       <div class="hamburger" id="hamburger">
@@ -596,7 +614,17 @@ textarea.form-input{min-height:130px;resize:vertical;}
     </div>
     <div class="projects-grid" id="tilt-projects">
 
-      <div class="project-item reveal-curtain">
+      <div class="project-item">
+        <div class="project-img-wrap"><img src="Images/Projects/zombi.jpg" alt="3D Adventure Game" class="project-img"></div>
+        <div class="project-content">
+          <h3 class="project-title"> 3D Action Shooter   </h3>
+          <p class="project-description"> Developed a 3D action shooter in Unity featuring player movement, pistol and RPG weapon systems, enemy AI, combat mechanics, helicopter landing sequences, air strikes, health and ammunition systems, and interactive environments.</p>
+          <div class="project-tags"><span class="project-tag">Unity</span><span class="project-tag">Object Pooling</span><span class="project-tag">C#</span><span class="project-tag">NavMesh</span></div>
+          <div class="project-links"><a href="https://youtube.com/watch?v=YqxVxqwzF_I" class="project-link"><i class="fas fa-globe"></i> Live Demo</a></div>
+        </div>
+      </div>
+
+      <div class="project-item">
         <div class="project-img-wrap"><img src="Images/Projects/1Game.png" alt="3D Adventure Game" class="project-img"></div>
         <div class="project-content">
           <h3 class="project-title">3D Adventure – Knight vs Monster</h3>
@@ -606,7 +634,7 @@ textarea.form-input{min-height:130px;resize:vertical;}
         </div>
       </div>
 
-      <div class="project-item reveal-curtain">
+      <div class="project-item">
         <div class="project-img-wrap"><img src="Images/Projects/Food.png" alt="Food Android App" class="project-img"></div>
         <div class="project-content">
           <h3 class="project-title">Food – Android App</h3>
@@ -616,7 +644,7 @@ textarea.form-input{min-height:130px;resize:vertical;}
         </div>
       </div>
 
-      <div class="project-item reveal-curtain">
+      <div class="project-item">
         <div class="project-img-wrap"><img src="Images/Projects/FoodSeller.png" alt="Food Seller Android App" class="project-img"></div>
         <div class="project-content">
           <h3 class="project-title">Food Seller – Android App</h3>
@@ -626,7 +654,7 @@ textarea.form-input{min-height:130px;resize:vertical;}
         </div>
       </div>
 
-      <div class="project-item reveal-curtain">
+      <div class="project-item">
         <div class="project-img-wrap"><img src="Images/Projects/sandow.png" alt="Sandow Android App" class="project-img"></div>
         <div class="project-content">
           <h3 class="project-title">Sandow – Android App</h3>
@@ -636,7 +664,7 @@ textarea.form-input{min-height:130px;resize:vertical;}
         </div>
       </div>
 
-      <div class="project-item reveal-curtain">
+      <div class="project-item">
         <div class="project-img-wrap"><img src="Images/Projects/Pure.png" alt="PURE React Native App" class="project-img"></div>
         <div class="project-content">
           <h3 class="project-title">PURE – React Native App</h3>
@@ -646,7 +674,7 @@ textarea.form-input{min-height:130px;resize:vertical;}
         </div>
       </div>
 
-      <div class="project-item reveal-curtain">
+      <div class="project-item">
         <div class="project-img-wrap"><img src="Images/Projects/BCD1.png" alt="Luxury Auction System" class="project-img"></div>
         <div class="project-content">
           <h3 class="project-title">Luxury Auction – Distributed System</h3>
@@ -656,7 +684,7 @@ textarea.form-input{min-height:130px;resize:vertical;}
         </div>
       </div>
 
-      <div class="project-item reveal-curtain">
+      <div class="project-item">
         <div class="project-img-wrap"><img src="Images/Projects/BCD2.png" alt="National Bank System" class="project-img"></div>
         <div class="project-content">
           <h3 class="project-title">National Bank – EJB Banking System</h3>
@@ -752,6 +780,19 @@ hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
   navList.classList.toggle('active');
 });
+const projectsNav = document.querySelector('.projects-nav-link');
+if (projectsNav) {
+  projectsNav.addEventListener('click', (e) => {
+    e.preventDefault();
+    const projects = document.getElementById('projects');
+    if (projects) {
+      projects.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    hamburger.classList.remove('active');
+    navList.classList.remove('active');
+  });
+}
+
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('active');
@@ -760,7 +801,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
 });
 
 /* ============ SCROLL REVEAL (all variants) ============ */
-const revealEls = document.querySelectorAll('.reveal, .reveal-clip, .reveal-left, .reveal-right, .reveal-rotate, .reveal-curtain');
+const revealEls = document.querySelectorAll('.reveal, .reveal-clip, .reveal-left, .reveal-right, .reveal-rotate');
 const io = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
@@ -770,6 +811,9 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15 });
 revealEls.forEach(el => io.observe(el));
+
+// Projects are intentionally not animation-dependent.
+document.querySelectorAll('#projects, #projects .section-title, #projects .project-item').forEach(el => el.classList.add('in'));
 
 /* ============ 3D TILT (skills + projects, hover only) ============ */
 function attachTilt(container){
